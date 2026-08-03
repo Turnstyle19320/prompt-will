@@ -3,279 +3,292 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Prompting the Will to Change — everything from the talk</title>
+<title>Prompting the Will to Change</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500;1,9..144,600&family=Inter+Tight:wght@700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@1,9..144,500;1,9..144,600&family=Inter+Tight:wght@700;800;900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper:#f4f7f6; --surface:#ffffff; --border:#d8e2df;
-    --ink:#152a2e; --muted:#4e6569;
-    --teal:#257887; --teal-text:#1c6472; --teal-deep:#0e363e;
-    --sky:#45acbe; --sky-soft:#bfe3ea; --pale:#e7f6f8;
-    --gold:#e79a25; --gold-text:#a3670a;
+    --bg:#081b20; --bg2:#0b2229; --card:rgba(255,255,255,.032); --card-hi:rgba(255,255,255,.055);
+    --line:rgba(143,210,222,.13); --line-hi:rgba(143,210,222,.3);
+    --ink:#e9f4f4; --dim:#8fa9ad; --faint:#5d777c;
+    --teal:#45acbe; --teal-soft:#8fd2de; --gold:#e79a25;
     --sans:'Inter',-apple-system,sans-serif;
     --disp:'Inter Tight','Inter',sans-serif;
     --serif:'Fraunces',Georgia,serif;
     --mono:'JetBrains Mono',ui-monospace,monospace;
   }
   *{margin:0;padding:0;box-sizing:border-box}
-  body{background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.55;overflow-wrap:break-word;
-    -webkit-font-smoothing:antialiased}
-  .wrap{max-width:760px;margin:0 auto;padding:0 20px 80px}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6;
+    overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+  ::selection{background:rgba(69,172,190,.35)}
 
-  header{background:var(--teal-deep);color:#f2f7f7;padding:52px 20px 44px;position:relative;overflow:hidden}
-  header::before{content:"";position:absolute;width:520px;height:520px;border-radius:50%;right:-180px;top:-260px;
-    background:radial-gradient(circle, rgba(69,172,190,.25), transparent 70%);pointer-events:none}
-  .hwrap{max-width:760px;margin:0 auto;position:relative;z-index:2}
-  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#8fd2de;font-weight:600}
-  header h1{font-family:var(--disp);font-size:clamp(30px,6vw,44px);font-weight:900;letter-spacing:-.02em;line-height:1.05;margin-top:10px}
-  header h1 em{font-family:var(--serif);font-style:italic;font-weight:600;color:var(--gold)}
-  header p{margin-top:14px;color:#a8c6cc;font-size:16px;max-width:560px}
-  .contacts{margin-top:20px;display:flex;flex-wrap:wrap;gap:18px;font-family:var(--mono);font-size:13px;color:#8fd2de}
+  nav{position:sticky;top:0;z-index:20;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    background:rgba(8,27,32,.72);border-bottom:1px solid var(--line)}
+  .nwrap{max-width:840px;margin:0 auto;padding:14px 22px;display:flex;align-items:center;gap:18px}
+  .brand{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--teal-soft);text-decoration:none;font-weight:500;margin-right:auto;white-space:nowrap}
+  nav a.lnk{font-size:13.5px;color:var(--dim);text-decoration:none;font-weight:500}
+  nav a.lnk:hover{color:var(--ink)}
+  @media(max-width:560px){nav a.lnk{display:none}}
 
-  .feedback-hero{margin:26px auto 0;max-width:760px;position:relative;z-index:2}
-  .fbtn{display:inline-block;background:var(--gold);color:#231503;font-family:var(--mono);font-weight:600;
-    font-size:15px;padding:13px 22px;border-radius:10px;text-decoration:none;letter-spacing:.03em}
+  .hero{position:relative;overflow:hidden;padding:84px 22px 72px}
+  .hero::before{content:"";position:absolute;width:700px;height:700px;border-radius:50%;
+    right:-260px;top:-340px;background:radial-gradient(circle, rgba(69,172,190,.16), transparent 68%);pointer-events:none}
+  .hero::after{content:"";position:absolute;width:460px;height:460px;border-radius:50%;
+    left:-220px;bottom:-300px;background:radial-gradient(circle, rgba(231,154,37,.07), transparent 68%);pointer-events:none}
+  .hwrap{max-width:840px;margin:0 auto;position:relative;z-index:2}
+  .kicker{font-family:var(--mono);font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--faint)}
+  .hero h1{font-family:var(--disp);font-size:clamp(38px,7.5vw,64px);font-weight:900;letter-spacing:-.03em;
+    line-height:1.02;margin-top:14px;max-width:640px}
+  .hero h1 em{font-family:var(--serif);font-style:italic;font-weight:600;
+    background:linear-gradient(100deg,var(--teal),var(--teal-soft));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .hero p{margin-top:18px;color:var(--dim);font-size:17px;max-width:520px}
+  .cta{margin-top:30px;display:flex;gap:12px;flex-wrap:wrap}
+  .btn{display:inline-block;font-family:var(--mono);font-size:14px;font-weight:500;letter-spacing:.02em;
+    padding:12px 20px;border-radius:10px;text-decoration:none;transition:all .15s ease}
+  .btn.gold{background:var(--gold);color:#231503}
+  .btn.gold:hover{filter:brightness(1.07)}
+  .btn.ghost{color:var(--teal-soft);border:1px solid var(--line-hi)}
+  .btn.ghost:hover{background:var(--card-hi)}
 
-  h2{font-family:var(--disp);font-size:clamp(22px,4.5vw,30px);font-weight:800;letter-spacing:-.015em;
-    margin:52px 0 6px;scroll-margin-top:20px}
-  .sub{color:var(--muted);font-size:15.5px;margin-bottom:18px}
-  h2 .n{font-family:var(--mono);font-size:14px;color:var(--teal-text);letter-spacing:.1em;display:block;margin-bottom:4px}
+  main{max-width:840px;margin:0 auto;padding:0 22px 110px}
+  section{margin-top:88px;scroll-margin-top:70px}
+  .snum{font-family:var(--mono);font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--teal)}
+  h2{font-family:var(--disp);font-size:clamp(24px,4.6vw,34px);font-weight:800;letter-spacing:-.02em;margin-top:8px}
+  .sub{color:var(--dim);font-size:15.5px;margin-top:8px;max-width:580px}
 
-  .ask{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
-  .chip{font-family:var(--mono);font-size:13.5px;font-weight:600;letter-spacing:.04em;color:var(--teal-deep);
-    background:var(--pale);border:1.5px solid var(--sky-soft);padding:9px 16px;border-radius:999px}
+  .chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+  .chip{font-family:var(--mono);font-size:13.5px;color:var(--teal-soft);
+    border:1px solid var(--line-hi);padding:9px 17px;border-radius:999px}
 
-  .prompt{background:var(--surface);border:1.5px solid var(--border);border-left:5px solid var(--teal);
-    border-radius:12px;padding:18px 18px 14px;margin:14px 0;position:relative}
-  .prompt .tag{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
-    color:var(--teal-text);font-weight:600;margin-bottom:8px;padding-right:70px}
-  .prompt .tag .live{color:var(--gold-text)}
-  .prompt p{font-family:var(--mono);font-size:14px;line-height:1.6;color:var(--ink);white-space:pre-wrap}
-  .prompt .ph{background:var(--pale);border-radius:4px;padding:0 5px;color:var(--teal-text);font-weight:600}
-  .copy{position:absolute;top:12px;right:12px;font-family:var(--mono);font-size:11.5px;font-weight:600;
-    background:var(--pale);color:var(--teal-text);border:1.5px solid var(--sky-soft);border-radius:7px;
-    padding:5px 10px;cursor:pointer}
-  .copy:active{background:var(--sky-soft)}
+  .prompt{background:var(--card);border:1px solid var(--line);border-radius:16px;
+    padding:20px;margin-top:16px;position:relative;transition:border-color .15s ease}
+  .prompt:hover{border-color:var(--line-hi)}
+  .ptag{font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;
+    color:var(--faint);margin-bottom:10px;padding-right:64px}
+  .ptag b{color:var(--gold);font-weight:500}
+  .prompt p{font-family:var(--mono);font-size:13.5px;line-height:1.7;color:#c9dee1;white-space:pre-wrap}
+  .ph{background:rgba(69,172,190,.16);border-radius:4px;padding:0 5px;color:var(--teal-soft)}
+  .copy{position:absolute;top:14px;right:14px;font-family:var(--mono);font-size:11px;
+    background:transparent;color:var(--dim);border:1px solid var(--line);border-radius:7px;
+    padding:5px 10px;cursor:pointer;transition:all .15s ease}
+  .copy:hover{color:var(--ink);border-color:var(--line-hi)}
 
-  .note{background:#fdf4e3;border:1.5px solid #f0d9ae;border-radius:12px;padding:14px 18px;margin:14px 0;font-size:14.5px;color:#3d2f14}
-  .note b{color:var(--gold-text)}
+  details{background:var(--card);border:1px solid var(--line);border-radius:16px;margin-top:10px;overflow:hidden}
+  details:hover{border-color:var(--line-hi)}
+  summary{list-style:none;cursor:pointer;padding:16px 20px;display:flex;align-items:center;gap:14px;user-select:none}
+  summary::-webkit-details-marker{display:none}
+  summary .no{font-family:var(--mono);font-size:12px;color:var(--gold);flex:0 0 auto}
+  summary .t{font-family:var(--disp);font-size:16.5px;font-weight:700;letter-spacing:-.01em}
+  summary .arrow{margin-left:auto;color:var(--faint);transition:transform .2s ease;font-size:12px}
+  details[open] summary .arrow{transform:rotate(90deg)}
+  details .body{padding:2px 20px 18px;position:relative}
+  details .body p{font-family:var(--mono);font-size:13.5px;line-height:1.7;color:#c9dee1;white-space:pre-wrap}
+  details .copy{top:-40px}
+  details .body{margin-top:0}
+  .dcopy{margin-top:14px;font-family:var(--mono);font-size:11px;background:transparent;color:var(--dim);
+    border:1px solid var(--line);border-radius:7px;padding:5px 10px;cursor:pointer}
+  .dcopy:hover{color:var(--ink);border-color:var(--line-hi)}
 
-  .studies{list-style:none;margin-top:6px}
-  .studies li{padding:11px 0;border-bottom:1px solid var(--border);font-size:14.5px}
-  .studies li b{display:block;font-weight:600}
-  .studies li span{font-family:var(--mono);font-size:12px;color:var(--muted)}
-  .studies a{color:var(--teal-text);font-weight:600;text-decoration:none;font-size:13px;font-family:var(--mono)}
-  .studies a:hover{text-decoration:underline}
+  .note{border:1px solid rgba(231,154,37,.3);background:rgba(231,154,37,.06);
+    border-radius:14px;padding:15px 18px;margin-top:16px;font-size:14.5px;color:#e5d6b8}
+  .note b{color:var(--gold)}
 
-  .moves{margin-top:10px}
-  .moves div{display:flex;gap:14px;padding:10px 0;border-bottom:1px solid var(--border);font-size:15px}
-  .moves b{font-family:var(--disp);color:var(--sky);font-size:20px;font-weight:900;flex:0 0 22px}
+  .steps{margin-top:18px;display:grid;gap:10px}
+  .step{display:flex;gap:16px;align-items:baseline;background:var(--card);border:1px solid var(--line);
+    border-radius:14px;padding:14px 18px;font-size:15px;color:var(--ink)}
+  .step b{font-family:var(--mono);font-size:12px;color:var(--teal);flex:0 0 auto}
+  .step span i{font-style:normal;color:var(--dim)}
 
-  footer{margin-top:64px;padding-top:22px;border-top:1.5px solid var(--border);font-size:13.5px;color:var(--muted)}
-  footer a{color:var(--teal-text)}
-  .toc{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px}
-  .toc a{font-family:var(--mono);font-size:12.5px;color:var(--teal-text);background:var(--surface);
-    border:1.5px solid var(--border);border-radius:999px;padding:7px 13px;text-decoration:none}
+  .studies{margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  @media(max-width:640px){.studies{grid-template-columns:1fr}}
+  .study{display:block;background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:14px 16px;text-decoration:none;transition:border-color .15s ease}
+  .study:hover{border-color:var(--line-hi)}
+  .study b{display:block;color:var(--ink);font-size:14px;font-weight:600;line-height:1.4}
+  .study span{display:block;margin-top:5px;font-family:var(--mono);font-size:11px;color:var(--faint)}
+
+  footer{border-top:1px solid var(--line);margin-top:100px;padding:30px 22px 50px}
+  .fwrap{max-width:840px;margin:0 auto;display:flex;flex-wrap:wrap;gap:8px 32px;
+    font-size:13.5px;color:var(--dim)}
+  .fwrap a{color:var(--teal-soft);text-decoration:none}
 </style>
 </head>
 <body>
 
-<header>
+<nav>
+  <div class="nwrap">
+    <a class="brand" href="#top">prompt-will</a>
+    <a class="lnk" href="#prompts">Prompts</a>
+    <a class="lnk" href="#gems">Gems</a>
+    <a class="lnk" href="#research">Research</a>
+    <a class="lnk" href="#studies">Studies</a>
+  </div>
+</nav>
+
+<div class="hero" id="top">
   <div class="hwrap">
-    <div class="eyebrow">Ingham ISD · Summer 2026</div>
+    <div class="kicker">Ingham ISD · Summer 2026 · Ken Turner &amp; Andrew Shauver</div>
     <h1>Prompting the <em>will to change</em></h1>
-    <p>Everything we promised from the stage: every prompt we typed, every study we cited, the Gem recipes, and your next step. No notes required — that was the point.</p>
-    <div class="contacts">
-      <span>Ken Turner · ken.turner@inghamisd.org</span>
-      <span>Andrew Shauver · ashauver@inghamisd.org</span>
-    </div>
-    <div class="feedback-hero">
+    <p>The prompts, research, and starting points from our session — here so you didn't have to take notes.</p>
+    <div class="cta">
       <!-- FEEDBACK_FORM_URL: replace href below -->
-      <a class="fbtn" href="#" id="feedback-link">✏️ 60-second session feedback</a>
+      <a class="btn gold" href="#" id="feedback-link">Session feedback</a>
+      <a class="btn ghost" href="#prompts">Jump to the prompts</a>
     </div>
   </div>
-</header>
-
-<div class="wrap">
-
-  <nav class="toc">
-    <a href="#ask">The ask</a>
-    <a href="#live">The two live prompts</a>
-    <a href="#nine">Nine seed prompts</a>
-    <a href="#gem">Gems &amp; the Arts Gem</a>
-    <a href="#audit">Audit anything</a>
-    <a href="#studies">The studies</a>
-    <a href="#unblock">Unblock email</a>
-  </nav>
-
-  <h2 id="ask">Your card, your fall</h2>
-  <p class="sub">Not school in general. Not someday. Your room, your kids, this August. (Don't own a class period? <b>One kid, one interaction, one prompt.</b>)</p>
-  <div class="ask">
-    <span class="chip">one assumption</span>
-    <span class="chip">one class</span>
-    <span class="chip">one prompt</span>
-  </div>
-  <div class="note" style="margin-top:18px"><b>Photographed your card?</b> Send it to either of us in October. We answer email — that's the job.</div>
-
-  <h2 id="live">The two prompts you watched, word for word</h2>
-  <p class="sub">Paste the body. Type only the <span class="ph">highlighted</span> parts. Two model turns max — then talk back to it.</p>
-
-  <div class="prompt">
-    <div class="tag"><span class="live">As seen live · demo 1</span> — the thought partner</div>
-    <p>I want assessments that tell me what students actually know — not what they can perform under pressure. Help me rethink how I gather evidence of learning in my <span class="ph">subject / grade</span>.
-
-Start by asking me what I really want to know about my students that my current assessments aren't telling me. Keep everything grounded in modern research, not hype.</p>
-    <button class="copy">copy</button>
-  </div>
-
-  <div class="prompt">
-    <div class="tag"><span class="live">As seen live · demo 2</span> — one big question</div>
-    <p>I teach <span class="ph">grade / subject</span>. Take my unit on <span class="ph">topic</span> and help me rebuild it around one big question my students would actually argue about at lunch.
-
-Ask me about my kids first. Then help me design 2–3 ways students could show me they've learned it — none of which are a worksheet.</p>
-    <button class="copy">copy</button>
-  </div>
-
-  <h2 id="nine">Nine seed prompts — one per assumption</h2>
-  <p class="sub">The four moves work on every card from the menu. Pick the assumption that made your jaw tighten; start with its prompt tonight.</p>
-
-  <div class="prompt">
-    <div class="tag">№ 01 · Learning = letters &amp; numbers</div>
-    <p>I want assessments that tell me what students actually know — not what they can perform under pressure. Help me rethink how I gather evidence of learning in my <span class="ph">subject / grade</span>. Start by asking me what I really want to know about my students that my current assessments aren't telling me. Keep everything grounded in modern research, not hype.</p>
-    <button class="copy">copy</button>
-  </div>
-
-  <div class="prompt">
-    <div class="tag">№ 02 · Content over transferable skills</div>
-    <p>I teach <span class="ph">subject / grade</span>. Take my unit on <span class="ph">topic</span> and help me redesign it so the content becomes the vehicle for one transferable skill my students will still be using in ten years — arguing from evidence, collaborating, revising their own work. Ask me first which of those skills my students most lack. The skill work has to replace existing busywork, not stack on top of it.</p>
-    <button class="copy">copy</button>
-  </div>
-
-  <div class="prompt">
-    <div class="tag">№ 03 · The teacher is the sole expert</div>
-    <p>I teach <span class="ph">subject / grade</span>, and my students' questions regularly outrun what I know. Help me make "I don't know — let's find out" a plan instead of a dodge. Ask me about my kids and my comfort level first. Then help me design a 15-minute inquiry routine we can run any day a great question lands — one where I facilitate the finding-out instead of supplying the answer.</p>
-    <button class="copy">copy</button>
-  </div>
-
-  <div class="prompt">
-    <div class="tag">№ 04 · Coverage over depth</div>
-    <p>I teach <span class="ph">subject / grade</span> under a pacing guide. Take my unit on <span class="ph">topic</span> and help me decide what to teach deeply and what to compress — without abandoning the standards. Start by asking me which standards actually recur later and which ones my students never truly get. Then help me build one deep week I could defend to anyone who asks.</p>
-    <button class="copy">copy</button>
-  </div>
-
-  <div class="prompt">
-    <div class="tag">№ 05 · Age = ability</div>
-    <p>I teach <span class="ph">grade</span>, and my students' readiness in <span class="ph">subject</span> spans years in both directions. Help me design one unit where students enter at different points and every one of them moves — without me writing three separate lesson plans. Ask me first how I currently figure out where each kid actually is. Keep it sustainable for one human being.</p>
-    <button class="copy">copy</button>
-  </div>
-
-  <div class="prompt">
-    <div class="tag">№ 06 · Time is the constant; mastery is the variable</div>
-    <p>In my classroom right now, time is the constant and mastery is the variable. I want to flip one unit: everyone masters it, and the time it takes is what varies. Ask me about my schedule constraints and about my fastest and slowest learners first. Then help me design the checkpoints, the re-dos, and what early finishers do that isn't more worksheets.</p>
-    <button class="copy">copy</button>
-  </div>
-
-  <div class="prompt">
-    <div class="tag">№ 07 · The bell owns the learning</div>
-    <p>I get <span class="ph">X</span> minutes per period. Help me redesign one recurring lesson so the thinking survives the bell — questions and threads that carry across days instead of resetting every period. Ask me first what my students lose most when the bell cuts us off. Small moves only: I don't control the schedule, and I'm not pretending I do.</p>
-    <button class="copy">copy</button>
-  </div>
-
-  <div class="prompt">
-    <div class="tag">№ 08 · Compliance before learning</div>
-    <p>I want to find out what my classroom actually rewards more: compliance or curiosity. Interview me — one question at a time — about what gets praised, what gets corrected, and what my quietest student did last week. Then help me redesign one daily routine so curiosity gets the attention that compliance gets now.</p>
-    <button class="copy">copy</button>
-  </div>
-
-  <div class="prompt">
-    <div class="tag">№ 09 · Tests measure schools</div>
-    <p>Our building's story gets told in test scores. Help me build a fuller evidence portfolio of what my students can actually do — artifacts, performances, growth over time — that I can put right next to those scores. Ask me first who the audience is: parents, my principal, or the students themselves. Then help me design something I can maintain in ten minutes a week.</p>
-    <button class="copy">copy</button>
-  </div>
-
-  <h2 id="gem">Save it as a Gem — and the Arts Integration Coach</h2>
-  <p class="sub">A Gem is just <b>instructions + your files, saved</b> — a colleague you set up once who's on call every planning period. In Gemini: Gems → New Gem → paste your prompt as the instructions → upload your files.</p>
-
-  <div class="prompt">
-    <div class="tag"><span class="live">As seen live</span> · Arts Integration Coach Gem — the instructions</div>
-    <p>I'm not artistic. Turn my regular lessons into simple arts-based activities using materials I already have. Ask me about my grade level, my space, and my supply budget first. Keep every activity 15–30 minutes, tie it to my lesson's learning goal, and cite the state arts standards I've uploaded.</p>
-    <button class="copy">copy</button>
-  </div>
-  <div class="note"><b>The seatbelt:</b> upload your state arts standards PDF as the Gem's file — that's who checks its work when there's no art teacher in the building. And to be blunt, the way we were on stage: the right fix is still hiring an art teacher. This is triage — the choice was never Gem vs. art teacher; it was Gem vs. zero art. If you <b>are</b> the art teacher: this is your student teacher, not your replacement.</div>
-
-  <h3 style="font-family:var(--disp);font-size:19px;margin-top:26px">That wasn't magic — it was four moves</h3>
-  <div class="moves">
-    <div><b>1</b><span><b style="all:unset;font-weight:700">A role and a real constraint.</b> Your subject, your kids, your building — specificity is the whole game.</span></div>
-    <div><b>2</b><span><b style="all:unset;font-weight:700">Make it ask YOU questions first.</b> "Start by asking me…" flips who's interviewing whom.</span></div>
-    <div><b>3</b><span><b style="all:unset;font-weight:700">Demand grounding.</b> "Research, not hype" — then actually follow a citation. You're allowed to check its work. You should.</span></div>
-    <div><b>4</b><span><b style="all:unset;font-weight:700">Save it as a Gem.</b> Set it up once; it's there every planning period, forever.</span></div>
-  </div>
-
-  <h2 id="audit">Never take a slide's word for it — including ours</h2>
-  <p class="sub">The literature review you watched us launch mid-talk. Run it yourself tonight — then run it on the next PD claim someone hands you.</p>
-
-  <div class="prompt">
-    <div class="tag"><span class="live">As seen live</span> · the Deep Research prompt</div>
-    <p>What does peer-reviewed research say about the relationship between grades and student motivation? Where is the evidence strongest — and where is it genuinely contested?</p>
-    <button class="copy">copy</button>
-  </div>
-
-  <div class="prompt">
-    <div class="tag">The second one we dared you to run · ceiling → proof</div>
-    <p>What does peer-reviewed research say about the relationship between student engagement and performance on standardized or common assessments? Where is the evidence strongest — and where is it genuinely contested?</p>
-    <button class="copy">copy</button>
-  </div>
-
-  <div class="prompt">
-    <div class="tag">Audit anything — the template</div>
-    <p>What does peer-reviewed research say about <span class="ph">the claim you were just handed</span>? Where is the evidence strongest — and where is it genuinely contested?</p>
-    <button class="copy">copy</button>
-  </div>
-
-  <h2 id="studies">The studies</h2>
-  <p class="sub">The four from the slide, then the wall. Where we didn't link a stable copy, the link searches Google Scholar for the exact study.</p>
-  <ul class="studies">
-    <li><b>13% give school an "A" for making learning exciting</b><span>Gallup / Walton Family Foundation, 2023 · 5th–12th graders</span> <a href="https://news.gallup.com/opinion/gallup/507053/k12-schools-struggle-prepare-excite-gen-learning.aspx">read it →</a></li>
-    <li><b>Students met assignment demands 71% of the time — and showed grade-level mastery 17%</b><span>TNTP, The Opportunity Myth, 2018</span> <a href="https://opportunitymyth.tntp.org/">read it →</a></li>
-    <li><b>22% say many/all teachers try to understand their lives · 42% really feel part of their school community</b><span>YouthTruth, Students Weigh In, 2022–23</span> <a href="https://youthtruth.org/resources/">read it →</a></li>
-    <li><b>Grading depressed later achievement for lower-achieving students</b><span>Klapp, Cliffordson &amp; Gustafsson, 2016</span> <a href="https://eric.ed.gov/?id=EJ1119939">read it →</a></li>
-    <li><b>Grades measure a blend of achievement and noncognitive factors</b><span>Brookhart et al., Review of Educational Research, 2016</span> <a href="https://journals.sagepub.com/doi/10.3102/0034654316672069">read it →</a></li>
-    <li><b>"I sell a product to a market that doesn't want it, but is forced by law to buy it."</b><span>Dan Meyer, TEDxNYED 2010</span> <a href="https://www.ted.com/talks/dan_meyer_math_class_needs_a_makeover">watch it →</a></li>
-    <li><b>Comments-only feedback beats grades for interest and performance</b><span>Butler 1987 · Butler &amp; Nisan 1986</span> <a href="https://scholar.google.com/scholar?q=Butler+1987+task-involving+ego-involving+properties+of+evaluation">find it →</a></li>
-    <li><b>Grades nudge performance-avoidance; autonomy sustains motivation</b><span>Pulfrey, Darnon &amp; Butera, 2013</span> <a href="https://scholar.google.com/scholar?q=Pulfrey+Darnon+Butera+2013+autonomy+grades">find it →</a></li>
-    <li><b>Percentage grades distort precision and reliability</b><span>Guskey</span> <a href="https://scholar.google.com/scholar?q=Guskey+percentage+grades+case+against">find it →</a></li>
-    <li><b>Meaningful choice boosts motivation and performance</b><span>Patall et al., Psychological Bulletin, 2008 · meta-analysis</span> <a href="https://scholar.google.com/scholar?q=Patall+Cooper+Robinson+2008+choice+intrinsic+motivation+meta-analysis">find it →</a></li>
-    <li><b>Project/problem-based learning raises motivation</b><span>Educational Psychology Review, 2024 · meta-analysis</span> <a href="https://scholar.google.com/scholar?q=project-based+learning+motivation+meta-analysis+2024+Educational+Psychology+Review">find it →</a></li>
-    <li><b>Relevance drives motivation and achievement</b><span>Annual Review of Developmental Psychology, 2021</span> <a href="https://scholar.google.com/scholar?q=relevance+motivation+achievement+integrated+theory+annual+review+2021">find it →</a></li>
-    <li><b>Personal-relevance interventions improve outcomes in classroom RCTs</b><span>JEP: Applied 2018 · PNAS 2023 · Frontiers 2023</span> <a href="https://scholar.google.com/scholar?q=utility+value+intervention+classroom+randomized">find it →</a></li>
-    <li><b>Project-based AP courses raise odds of scoring 3+</b><span>cluster RCT</span> <a href="https://scholar.google.com/scholar?q=knowledge+in+action+project-based+AP+randomized">find it →</a></li>
-    <li><b>Global shift toward creativity and problem-solving</b><span>OECD PISA 2022, Volume III</span> <a href="https://www.oecd.org/en/publications/pisa-2022-results-volume-iii_765ee8c2-en.html">read it →</a></li>
-  </ul>
-
-  <h2 id="unblock">Blocked in your district? The two-line email</h2>
-  <p class="sub">Teacher-side use, your account, zero student data — exactly the low-risk case that gets tools enabled. CC us; we mean it.</p>
-  <div class="prompt">
-    <div class="tag">To your IT / technology director</div>
-    <p>Subject: Gemini access for teacher planning
-
-Hi <span class="ph">name</span> — could we enable Google Gemini (part of our existing Workspace for Education) for staff accounts? I'd use it for teacher-side lesson planning only — no student data, no student accounts. It was demonstrated for teacher use at a summer session by Ingham ISD's instruction &amp; technology coaches, whom I've CC'd and who are glad to answer any questions. Thanks!</p>
-    <button class="copy">copy</button>
-  </div>
-
-  <footer>
-    <p><b>Ken Turner</b> · ken.turner@inghamisd.org &nbsp;·&nbsp; <b>Andrew Shauver</b> · ashauver@inghamisd.org<br>
-    Instruction &amp; Technology Coaches, Ingham ISD · September's coming either way — and none of it is physics.</p>
-  </footer>
 </div>
 
+<main>
+
+  <section id="ask">
+    <div class="snum">The ask</div>
+    <h2>One assumption. One class. One prompt.</h2>
+    <p class="sub">That's the whole thing. Pick the assumption you'd retire, pick one class period, and run one prompt this week while it's fresh. If you try it, we'd like to hear how it goes — email either of us, any time.</p>
+    <div class="chips">
+      <span class="chip">one assumption</span>
+      <span class="chip">one class</span>
+      <span class="chip">one prompt</span>
+    </div>
+  </section>
+
+  <section id="prompts">
+    <div class="snum">01 · From the demos</div>
+    <h2>The two demo prompts</h2>
+    <p class="sub">Close to what we ran on stage — treat them as starting points, not scripts. Copy, paste into Gemini, fill in the highlighted parts, and push back on whatever it gives you.</p>
+
+    <div class="prompt">
+      <div class="ptag"><b>Demo 1</b> · a planning thought partner</div>
+      <p>I want assessments that tell me what students actually know — not what they can perform under pressure. Help me rethink how I gather evidence of learning in my <span class="ph">subject / grade</span>.
+
+Start by asking me what I really want to know about my students that my current assessments aren't telling me. Keep everything grounded in modern research, not hype.</p>
+      <button class="copy">copy</button>
+    </div>
+
+    <div class="prompt">
+      <div class="ptag"><b>Demo 2</b> · one big question</div>
+      <p>I teach <span class="ph">grade / subject</span>. Take my unit on <span class="ph">topic</span> and help me rebuild it around one big question my students would actually argue about at lunch.
+
+Ask me about my kids first. Then help me design 2–3 ways students could show me they've learned it — none of which are a worksheet.</p>
+      <button class="copy">copy</button>
+    </div>
+
+    <div class="snum" style="margin-top:56px">02 · One per assumption</div>
+    <h2>Nine seed prompts</h2>
+    <p class="sub">A starting point for each assumption on the menu. Edit ruthlessly — the more these sound like your classroom, the better they work.</p>
+
+    <details><summary><span class="no">01</span><span class="t">Learning = letters &amp; numbers</span><span class="arrow">▶</span></summary>
+      <div class="body"><p>I want assessments that tell me what students actually know — not what they can perform under pressure. Help me rethink how I gather evidence of learning in my <span class="ph">subject / grade</span>. Start by asking me what I really want to know about my students that my current assessments aren't telling me. Keep everything grounded in modern research, not hype.</p><button class="dcopy">copy</button></div>
+    </details>
+    <details><summary><span class="no">02</span><span class="t">Content over transferable skills</span><span class="arrow">▶</span></summary>
+      <div class="body"><p>I teach <span class="ph">subject / grade</span>. Take my unit on <span class="ph">topic</span> and help me redesign it so the content becomes the vehicle for one transferable skill my students will still be using in ten years — arguing from evidence, collaborating, revising their own work. Ask me first which of those skills my students most lack. The skill work has to replace existing busywork, not stack on top of it.</p><button class="dcopy">copy</button></div>
+    </details>
+    <details><summary><span class="no">03</span><span class="t">The teacher is the sole expert</span><span class="arrow">▶</span></summary>
+      <div class="body"><p>I teach <span class="ph">subject / grade</span>, and my students' questions regularly outrun what I know. Help me make "I don't know — let's find out" a plan instead of a dodge. Ask me about my kids and my comfort level first. Then help me design a 15-minute inquiry routine we can run any day a great question lands — one where I facilitate the finding-out instead of supplying the answer.</p><button class="dcopy">copy</button></div>
+    </details>
+    <details><summary><span class="no">04</span><span class="t">Coverage over depth</span><span class="arrow">▶</span></summary>
+      <div class="body"><p>I teach <span class="ph">subject / grade</span> under a pacing guide. Take my unit on <span class="ph">topic</span> and help me decide what to teach deeply and what to compress — without abandoning the standards. Start by asking me which standards actually recur later and which ones my students never truly get. Then help me build one deep week I could defend to anyone who asks.</p><button class="dcopy">copy</button></div>
+    </details>
+    <details><summary><span class="no">05</span><span class="t">Age = ability</span><span class="arrow">▶</span></summary>
+      <div class="body"><p>I teach <span class="ph">grade</span>, and my students' readiness in <span class="ph">subject</span> spans years in both directions. Help me design one unit where students enter at different points and every one of them moves — without me writing three separate lesson plans. Ask me first how I currently figure out where each kid actually is. Keep it sustainable for one human being.</p><button class="dcopy">copy</button></div>
+    </details>
+    <details><summary><span class="no">06</span><span class="t">Time is the constant; mastery is the variable</span><span class="arrow">▶</span></summary>
+      <div class="body"><p>In my classroom right now, time is the constant and mastery is the variable. I want to flip one unit: everyone masters it, and the time it takes is what varies. Ask me about my schedule constraints and about my fastest and slowest learners first. Then help me design the checkpoints, the re-dos, and what early finishers do that isn't more worksheets.</p><button class="dcopy">copy</button></div>
+    </details>
+    <details><summary><span class="no">07</span><span class="t">The bell owns the learning</span><span class="arrow">▶</span></summary>
+      <div class="body"><p>I get <span class="ph">X</span> minutes per period. Help me redesign one recurring lesson so the thinking survives the bell — questions and threads that carry across days instead of resetting every period. Ask me first what my students lose most when the bell cuts us off. Small moves only: I don't control the schedule, and I'm not pretending I do.</p><button class="dcopy">copy</button></div>
+    </details>
+    <details><summary><span class="no">08</span><span class="t">Compliance before learning</span><span class="arrow">▶</span></summary>
+      <div class="body"><p>I want to find out what my classroom actually rewards more: compliance or curiosity. Interview me — one question at a time — about what gets praised, what gets corrected, and what my quietest student did last week. Then help me redesign one daily routine so curiosity gets the attention that compliance gets now.</p><button class="dcopy">copy</button></div>
+    </details>
+    <details><summary><span class="no">09</span><span class="t">Tests measure schools</span><span class="arrow">▶</span></summary>
+      <div class="body"><p>Our building's story gets told in test scores. Help me build a fuller evidence portfolio of what my students can actually do — artifacts, performances, growth over time — that I can put right next to those scores. Ask me first who the audience is: parents, my principal, or the students themselves. Then help me design something I can maintain in ten minutes a week.</p><button class="dcopy">copy</button></div>
+    </details>
+  </section>
+
+  <section id="gems">
+    <div class="snum">03 · Make it permanent</div>
+    <h2>Save it as a Gem</h2>
+    <p class="sub">A Gem is a saved setup — your instructions plus any files you upload — so the conversation is there every planning period instead of starting from zero. In Gemini: <b style="color:var(--ink)">Gems → New Gem</b>, paste your prompt as the instructions, add your files.</p>
+
+    <div class="steps">
+      <div class="step"><b>1</b><span>A role and a real constraint <i>— your subject, your kids, your building</i></span></div>
+      <div class="step"><b>2</b><span>Make it ask you questions first <i>— "start by asking me…"</i></span></div>
+      <div class="step"><b>3</b><span>Ask for research, then check a citation <i>— you're allowed to verify its work</i></span></div>
+      <div class="step"><b>4</b><span>Save it as a Gem <i>— set up once, on call after that</i></span></div>
+    </div>
+
+    <div class="prompt" style="margin-top:26px">
+      <div class="ptag"><b>Example</b> · arts integration coach</div>
+      <p>I'm not artistic. Turn my regular lessons into simple arts-based activities using materials I already have. Ask me about my grade level, my space, and my supply budget first. Keep every activity 15–30 minutes, tie it to my lesson's learning goal, and cite the state arts standards I've uploaded.</p>
+      <button class="copy">copy</button>
+    </div>
+    <div class="note"><b>Worth saying plainly:</b> this is a stopgap for a building without an arts position, not an argument against filling one. Upload your state arts standards as the Gem's file so its suggestions have something to answer to.</div>
+  </section>
+
+  <section id="research">
+    <div class="snum">04 · Check the claims</div>
+    <h2>Run the research yourself</h2>
+    <p class="sub">The literature review we started during the session, and a template for auditing any claim from any PD — including ours. In Gemini, choose Deep Research and paste one of these.</p>
+
+    <div class="prompt">
+      <div class="ptag"><b>From the session</b> · grades &amp; motivation</div>
+      <p>What does peer-reviewed research say about the relationship between grades and student motivation? Where is the evidence strongest — and where is it genuinely contested?</p>
+      <button class="copy">copy</button>
+    </div>
+    <div class="prompt">
+      <div class="ptag">Engagement &amp; assessment performance</div>
+      <p>What does peer-reviewed research say about the relationship between student engagement and performance on standardized or common assessments? Where is the evidence strongest — and where is it genuinely contested?</p>
+      <button class="copy">copy</button>
+    </div>
+    <div class="prompt">
+      <div class="ptag">The template · audit anything</div>
+      <p>What does peer-reviewed research say about <span class="ph">the claim you were just handed</span>? Where is the evidence strongest — and where is it genuinely contested?</p>
+      <button class="copy">copy</button>
+    </div>
+  </section>
+
+  <section id="studies">
+    <div class="snum">05 · Sources</div>
+    <h2>The studies</h2>
+    <p class="sub">The four from the session, then the longer list. Where there's no stable public copy, the link searches Google Scholar for the exact study.</p>
+    <div class="studies">
+      <a class="study" href="https://news.gallup.com/opinion/gallup/507053/k12-schools-struggle-prepare-excite-gen-learning.aspx"><b>13% give school an "A" for making learning exciting</b><span>Gallup / Walton Family Foundation · 2023</span></a>
+      <a class="study" href="https://opportunitymyth.tntp.org/"><b>Students met assignment demands 71% of the time — showed grade-level mastery 17%</b><span>TNTP · The Opportunity Myth · 2018</span></a>
+      <a class="study" href="https://youthtruth.org/resources/"><b>22% say teachers try to understand their lives · 42% feel part of their school community</b><span>YouthTruth · 2022–23</span></a>
+      <a class="study" href="https://eric.ed.gov/?id=EJ1119939"><b>Grading depressed later achievement for lower-achieving students</b><span>Klapp, Cliffordson &amp; Gustafsson · 2016</span></a>
+      <a class="study" href="https://journals.sagepub.com/doi/10.3102/0034654316672069"><b>Grades measure a blend of achievement and noncognitive factors</b><span>Brookhart et al. · Review of Educational Research · 2016</span></a>
+      <a class="study" href="https://www.ted.com/talks/dan_meyer_math_class_needs_a_makeover"><b>"I sell a product to a market that doesn't want it…"</b><span>Dan Meyer · TEDxNYED · 2010</span></a>
+      <a class="study" href="https://scholar.google.com/scholar?q=Butler+1987+task-involving+ego-involving+properties+of+evaluation"><b>Comments-only feedback beats grades for interest and performance</b><span>Butler 1987 · Butler &amp; Nisan 1986</span></a>
+      <a class="study" href="https://scholar.google.com/scholar?q=Pulfrey+Darnon+Butera+2013+autonomy+grades"><b>Grades nudge performance-avoidance; autonomy sustains motivation</b><span>Pulfrey, Darnon &amp; Butera · 2013</span></a>
+      <a class="study" href="https://scholar.google.com/scholar?q=Guskey+percentage+grades+case+against"><b>Percentage grades distort precision and reliability</b><span>Guskey</span></a>
+      <a class="study" href="https://scholar.google.com/scholar?q=Patall+Cooper+Robinson+2008+choice+intrinsic+motivation+meta-analysis"><b>Meaningful choice boosts motivation and performance</b><span>Patall et al. · Psychological Bulletin · 2008</span></a>
+      <a class="study" href="https://scholar.google.com/scholar?q=project-based+learning+motivation+meta-analysis+2024+Educational+Psychology+Review"><b>Project/problem-based learning raises motivation</b><span>Educational Psychology Review · 2024 meta-analysis</span></a>
+      <a class="study" href="https://scholar.google.com/scholar?q=relevance+motivation+achievement+integrated+theory+annual+review+2021"><b>Relevance drives motivation and achievement</b><span>Annual Review of Developmental Psychology · 2021</span></a>
+      <a class="study" href="https://scholar.google.com/scholar?q=utility+value+intervention+classroom+randomized"><b>Personal-relevance interventions improve outcomes in classroom RCTs</b><span>JEP: Applied 2018 · PNAS 2023 · Frontiers 2023</span></a>
+      <a class="study" href="https://scholar.google.com/scholar?q=knowledge+in+action+project-based+AP+randomized"><b>Project-based AP courses raise odds of scoring 3+</b><span>Cluster RCT</span></a>
+      <a class="study" href="https://www.oecd.org/en/publications/pisa-2022-results-volume-iii_765ee8c2-en.html"><b>Global shift toward creativity and problem-solving</b><span>OECD PISA 2022 · Volume III</span></a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="fwrap">
+    <span><b style="color:var(--ink)">Ken Turner</b> · <a href="mailto:ken.turner@inghamisd.org">ken.turner@inghamisd.org</a></span>
+    <span><b style="color:var(--ink)">Andrew Shauver</b> · <a href="mailto:ashauver@inghamisd.org">ashauver@inghamisd.org</a></span>
+    <span>Instruction &amp; Technology Coaches · Ingham ISD</span>
+  </div>
+</footer>
+
 <script>
-  document.querySelectorAll('.copy').forEach(btn=>{
+  document.querySelectorAll('.copy,.dcopy').forEach(btn=>{
     btn.addEventListener('click',()=>{
-      const p=btn.parentElement.querySelector('p');
+      const p=btn.closest('.prompt,.body').querySelector('p');
       navigator.clipboard.writeText(p.innerText).then(()=>{
-        btn.textContent='copied ✓'; setTimeout(()=>btn.textContent='copy',1600);
+        btn.textContent='copied'; setTimeout(()=>btn.textContent='copy',1500);
       });
     });
   });
