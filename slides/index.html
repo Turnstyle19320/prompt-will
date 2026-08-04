@@ -75,6 +75,9 @@
   .slide .brandtag{position:absolute;right:44px;bottom:30px;font-family:var(--mono);font-size:12px;
     color:var(--muted);letter-spacing:.08em;z-index:6;pointer-events:none;opacity:.85}
   .slide.dark .brandtag{color:#7fa6ac}
+  .slide .leadtag{position:absolute;right:44px;bottom:52px;font-family:var(--mono);font-size:12px;
+    font-weight:600;letter-spacing:.14em;color:var(--teal-text);opacity:.7;z-index:6;pointer-events:none}
+  .slide.dark .leadtag{color:#8fd2de}
   .slide.cover .brandtag{display:none}
   .slide.cover:not(.dark) .footlink{display:none}
 
@@ -739,9 +742,12 @@
   document.getElementById('total').textContent=total;
 
   // footer link + brand tag on every slide
-  slides.forEach(s=>{
+  // who kicks off each slide (1-indexed slides 5-22)
+  const LEAD=['','','','','A','K','AK','A','K','A','K','A','K','KA','A','K','A','K','A','K','A','K'];
+  slides.forEach((s,k)=>{
     const f=document.createElement('div');f.className='footlink';f.textContent='bit.ly/prompting-will';s.appendChild(f);
     const b=document.createElement('div');b.className='brandtag';b.textContent='Prompting the Will to Change · Ingham ISD';s.appendChild(b);
+    if(LEAD[k]){const l=document.createElement('div');l.className='leadtag';l.textContent=LEAD[k];s.appendChild(l);}
   });
 
   function fit(){
